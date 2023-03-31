@@ -6,17 +6,17 @@ use gamesearchalgorithms::{
 };
 use rand::{Rng, RngCore};
 
-struct RandomAgent<'a> {
-    rng: &'a mut dyn RngCore,
+struct RandomAgent<'a, T: RngCore> {
+    rng: &'a mut T,
 }
 
-impl<'a> RandomAgent<'a> {
-    fn new(rng: &'a mut dyn RngCore) -> RandomAgent {
+impl<'a, T: RngCore> RandomAgent<'a, T> {
+    fn new(rng: &'a mut T) -> Self {
         RandomAgent { rng }
     }
 }
 
-impl Agent<GameState, Action> for RandomAgent<'_> {
+impl<T: RngCore> Agent<GameState, Action> for RandomAgent<'_, T> {
     fn choose_action(&mut self, state: &GameState) -> Action {
         let actions = state.valid_actions();
         actions[self.rng.gen_range(0..actions.len())]
