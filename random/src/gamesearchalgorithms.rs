@@ -20,7 +20,7 @@ pub trait GameStateBase<T> {
 pub mod maze {
     use rand::Rng;
     use rand::{rngs::StdRng, SeedableRng};
-    use std::fmt::Debug;
+    use std::fmt::{Debug, Formatter, Result};
 
     use super::GameStateBase;
 
@@ -116,7 +116,7 @@ pub mod maze {
     }
 
     impl Debug for GameState {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        fn fmt(&self, f: &mut Formatter<'_>) -> Result {
             writeln!(f, "turn:\t{}", self.turn)?;
             writeln!(f, "score:\t{}", self.score)?;
 
