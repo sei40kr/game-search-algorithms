@@ -1,6 +1,4 @@
-mod gamesearchalgorithms;
-
-use gamesearchalgorithms::{
+use lib::{
     maze::{Action, GameState},
     Agent, GameStateBase,
 };
