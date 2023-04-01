@@ -24,15 +24,17 @@ pub mod maze {
 
     use super::GameStateBase;
 
+    #[derive(Clone)]
     struct Player {
         y: usize,
         x: usize,
     }
 
+    #[derive(Clone)]
     pub struct GameState {
         h: usize,
         w: usize,
-        score: i32,
+        pub score: i32,
         points: Vec<Vec<i32>>,
         max_turns: i32,
         turn: i32,
