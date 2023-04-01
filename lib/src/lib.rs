@@ -1,12 +1,5 @@
 pub trait Agent<T: GameStateBase<S>, S> {
-    fn choose_action(&mut self, state: &T) -> S;
-
-    fn play_game(&mut self, state: &mut T) {
-        while !state.is_game_over() {
-            let action = self.choose_action(&state);
-            state.advance(action);
-        }
-    }
+    fn play_game(&mut self, state: &T) -> T;
 }
 
 pub trait GameStateBase<T> {
