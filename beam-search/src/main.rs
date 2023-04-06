@@ -74,12 +74,14 @@ impl BeamSearchAgent {
             }
 
             beam = next_beam
+                .into_sorted_vec()
                 .into_iter()
+                .rev()
                 .take(self.beam_width)
                 .collect::<BinaryHeap<_>>();
         }
 
-        beam.pop().unwrap().first_action
+        beam.pop().and_then(|s| s.first_action)
     }
 }
 
